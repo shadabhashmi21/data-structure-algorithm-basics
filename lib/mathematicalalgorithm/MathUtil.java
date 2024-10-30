@@ -63,7 +63,8 @@ public class MathUtil {
         System.out.println("Enter second number");
         int b = sc.nextInt();
 
-        System.out.println("HCF = " + getHFC(a, b));
+        System.out.println("HCF = " + getHCF(a, b));
+        System.out.println("LCM = " + getLCM(a, b));
 
         sc.close();
     }
