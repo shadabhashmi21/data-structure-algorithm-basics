@@ -9,7 +9,7 @@ import java.util.Scanner;
  * O(log(min(num1, num2))) time complexity.
  */
 
-public class HCF {
+public class MathUtil {
 /**
      * Calculates the Highest Common Factor (HCF) of two integers.
      *
@@ -26,13 +26,32 @@ public class HCF {
      * </pre>
      */
 
-    static int getHFC(int num1, int num2){
+    static int getHCF(int num1, int num2){
         while (num2 != 0) {
             int temp = num2; // Store the current value of num2
             num2 = num1 % num2; // Replace num2 with the remainder of num1 divided by num2
             num1 = temp; // Update num1 to the previous value of num2
         }
         return num1; // When num2 becomes 0, num1 contains the HCF
+    }
+
+    /**
+     * Finds the LCM of two integers using the relationship between LCM and HCF:
+     * LCM(a, b) = |a * b| / HCF(a, b)
+     *
+     * @param num1 First integer
+     * @param num2 Second integer
+     * @return The LCM of num1 and num2
+     *
+     * Example:
+     * LCM.getLCM(48, 18) -> returns 144
+     *
+     * Time Complexity: O(log(min(num1, num2))) for HCF calculation,
+     *                   O(1) for LCM calculation using the formula.
+     */
+    public static int getLCM(int num1, int num2) {
+        int hcf = getHCF(num1, num2);               // Calculate HCF of num1 and num2
+        return Math.abs(num1 * num2) / hcf;         // Calculate and return LCM using the formula
     }
 
     public static void main(String[] args) {
